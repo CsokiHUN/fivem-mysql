@@ -1,0 +1,10 @@
+{
+    "version": "1.0.0",
+    "author": "Csoki",
+    "description": "MySQL wrapper for FiveM",
+    "main": "server.js",
+    "license": "ISC",
+    "dependencies": {
+        "mysql2": "^2.2.5"
+    }
+}
