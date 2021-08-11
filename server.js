@@ -1,4 +1,4 @@
-const DEBUG = false; //Show times
+const DEBUG = true; //Show times
 
 const mysql = require('mysql2');
 
@@ -67,11 +67,16 @@ function query(queryString, args, cb) {
     if (typeof args != 'object') return console.error('query args not array!');
 
     const conn = mysql.createConnection(getConnectionData());
+    const startTime = new Date().getTime();
 
     conn.query(queryString, args, function (err, rows) {
         if (err) console.warn(err);
 
         if (cb) cb(rows);
+
+        if (DEBUG) {
+            console.log(`query time: ${new Date().getTime() - startTime}ms`);
+        }
 
         conn.close();
     });
@@ -81,11 +86,17 @@ exports('query', query);
 function exec(queryString, args) {
     if (args && typeof args != 'object')
         return console.error('query args not array!');
+
     const conn = mysql.createConnection(getConnectionData());
+    const startTime = new Date().getTime();
 
     conn.execute(queryString, args, function (err) {
         if (err) console.warn(err);
         conn.close();
+
+        if (DEBUG) {
+            console.log(`exec time: ${new Date().getTime() - startTime}ms`);
+        }
     });
 
     return true;
