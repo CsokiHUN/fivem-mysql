@@ -1,7 +1,7 @@
 local MYSQL_RESOURCE_NAME = "mysql"
 
 function dbQuery(callback, queryString, args)
-	if type(callback) ~= "string" then
+	if type(callback) == "string" then
 		args = queryString
 		queryString = callback
 		callback = nil
