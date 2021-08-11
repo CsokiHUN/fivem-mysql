@@ -44,7 +44,7 @@ function init() {
         connection.close();
     });
 }
-init();
+init(); //Start script
 
 function getConnectionData() {
     if (connString) {
