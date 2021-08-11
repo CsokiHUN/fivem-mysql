@@ -1,4 +1,4 @@
-local MYSQL_RESOURCE_NAME = "cs_mysql"
+local MYSQL_RESOURCE_NAME = "mysql"
 
 function dbQuery(callback, queryString, args)
 	if type(callback) ~= "string" then
