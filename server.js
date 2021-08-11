@@ -5,7 +5,10 @@ const mysql = require('mysql2');
 let connString = false;
 let connData = {};
 
-function init() {
+AddEventHandler('onResourceStart', (resourceName) => {
+    if (resourceName != GetCurrentResourceName()) {
+        return;
+    }
     try {
         connString = GetConvar('mysql_connection_string');
         const splitted = connString.split(';');
@@ -43,8 +46,7 @@ function init() {
 
         connection.close();
     });
-}
-init(); //Start script
+});
 
 function getConnectionData() {
     if (connString) {
@@ -67,7 +69,7 @@ function query(queryString, args, cb) {
     const conn = mysql.createConnection(getConnectionData());
 
     conn.query(queryString, args, function (err, rows) {
-        if (err) console.error(err);
+        if (err) console.warn(err);
 
         if (cb) cb(rows);
 
@@ -77,9 +79,12 @@ function query(queryString, args, cb) {
 exports('query', query);
 
 function exec(queryString, args) {
+    if (args && typeof args != 'object')
+        return console.error('query args not array!');
     const conn = mysql.createConnection(getConnectionData());
 
-    conn.execute(queryString, args, function () {
+    conn.execute(queryString, args, function (err) {
+        if (err) console.warn(err);
         conn.close();
     });
 

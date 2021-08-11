@@ -10,6 +10,6 @@ function dbQuery(callback, queryString, args)
 	return exports[MYSQL_RESOURCE_NAME]:query(queryString, args, callback)
 end
 
-function dbExec(queryString, args)
-	return exports[MYSQL_RESOURCE_NAME]:exec(queryString, args)
+function dbExec(...)
+	return exports[MYSQL_RESOURCE_NAME]:exec(...)
 end
