@@ -29,7 +29,7 @@ server_script  '@mysql/import.lua'
 
 ### dbQuery
 
-**Arguments: **
+**Arguments**
 
 -   callback: function, returns mysql query result
 -   queryString: string
@@ -57,12 +57,13 @@ dbQuery(
 
 ### dbExec
 
-**Arguments: **
+**Arguments:**
 
 -   queryString: string
 -   args: table
 
-**Returns: **
+**Returns:**
+
 boolean, (note: if it runs successfully it returns a true value)
 
 ```lua
