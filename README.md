@@ -25,9 +25,10 @@
 server_script  '@mysql/import.lua'
 ```
 
-#Functions
+# Functions
 
-###dbQuery
+### dbQuery
+
 **Arguments: **
 
 -   callback: function, returns mysql query result
@@ -54,7 +55,8 @@ dbQuery(
 
 ---
 
-###dbExec
+### dbExec
+
 **Arguments: **
 
 -   queryString: string
