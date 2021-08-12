@@ -43,7 +43,7 @@ dbQuery(callback, queryString, args)
 ```lua
 dbQuery(
 	function(result)
-		print(#result) --print result table lenght
+	  print(#result) --print result table lenght
 	end,
 	"SELECT * FROM users WHERE identifier = ? LIMIT 1",
 	{
@@ -59,6 +59,9 @@ dbQuery(
 
 -   queryString: string
 -   args: table
+
+**Returns: **
+boolean, (note: if it runs successfully it returns a true value)
 
 ```lua
 dbExec(queryString, args)
