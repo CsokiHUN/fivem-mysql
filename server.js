@@ -90,7 +90,7 @@ function exec(queryString, args) {
     const conn = mysql.createConnection(getConnectionData());
     const startTime = new Date().getTime();
 
-    conn.execute(queryString, args, function (err) {
+    return conn.execute(queryString, args, function (err) {
         if (err) console.warn(err);
         conn.close();
 
@@ -98,7 +98,5 @@ function exec(queryString, args) {
             console.log(`exec time: ${new Date().getTime() - startTime}ms`);
         }
     });
-
-    return true;
 }
 exports('exec', exec);

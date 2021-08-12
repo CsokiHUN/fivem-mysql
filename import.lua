@@ -7,7 +7,17 @@ function dbQuery(callback, queryString, args)
 		callback = nil
 	end
 
-	return exports[MYSQL_RESOURCE_NAME]:query(queryString, args, callback)
+	if callback then
+		return exports[MYSQL_RESOURCE_NAME]:query(queryString, args, callback)
+	else
+		local p = promise.new()
+
+		exports[MYSQL_RESOURCE_NAME]:query(queryString, args, function(...)
+			p:resolve(...)
+		end)
+
+		return Citizen.Await(p)
+	end
 end
 
 function dbExec(...)
