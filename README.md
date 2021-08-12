@@ -31,7 +31,7 @@ server_script  '@mysql/import.lua'
 
 **Arguments**
 
--   callback: function, returns mysql query result
+-   callback: function, returns mysql query result _optional_
 -   queryString: string
 -   args: table
 
@@ -41,11 +41,24 @@ dbQuery(callback, queryString, args)
 
 **Example**
 
+With callback
+
 ```lua
 dbQuery(
 	function(result)
 	  print(#result) --print result table lenght
 	end,
+	"SELECT * FROM users WHERE identifier = ? LIMIT 1",
+	{
+		identifier,
+	}
+)
+```
+
+Without callback
+
+```lua
+local result = dbQuery(
 	"SELECT * FROM users WHERE identifier = ? LIMIT 1",
 	{
 		identifier,
