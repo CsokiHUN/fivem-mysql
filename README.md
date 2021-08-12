@@ -2,7 +2,7 @@
 
 #### This script is significantly faster than [mysql-async](https://github.com/brouznouf/fivem-mysql-async 'mysql-async') based on my testing.
 
-# Install
+# Install / Configure
 
 ##### 1. Set the connection datas in settings.json file
 
