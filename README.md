@@ -66,6 +66,12 @@ local result = dbQuery(
 )
 ```
 
+Query arguments not table
+
+```lua
+local result = dbQuery("SELECT * FROM users WHERE identifier = ? LIMIT 1", identifier)
+```
+
 ---
 
 ### dbExec
@@ -89,4 +95,10 @@ dbExec(queryString, args)
 dbExec("INSERT INTO users SET name = ?", {
 	GetPlayerName(player),
 })
+```
+
+#### OR
+
+```lua
+dbExec("INSERT INTO users SET name = ?", GetPlayerName(player) )
 ```

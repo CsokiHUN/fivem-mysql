@@ -6,6 +6,5 @@
     "license": "ISC",
     "dependencies": {
         "mysql2": "^2.2.5"
-    },
-    "teszt": "value"
+    }
 }
