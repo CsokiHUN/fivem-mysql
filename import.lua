@@ -1,16 +1,15 @@
 local MYSQL_RESOURCE_NAME = "mysql"
 
 function dbQuery(callback, queryString, ...)
+	local args = { ... }
+
 	if type(callback) == "string" then
-		args = queryString
+		args = { queryString, table.unpack(args) }
 		queryString = callback
 		callback = nil
 	end
 
-	local args = { ... }
-	if type(args[1]) == "table" then
-		args = args[1]
-	end
+	args = type(args[1]) == "table" and args[1] or args
 
 	if callback then
 		return exports[MYSQL_RESOURCE_NAME]:query(queryString, args, callback)
@@ -27,9 +26,7 @@ end
 
 function dbExec(queryString, ...)
 	local args = { ... }
-	if type(args[1]) == "table" then
-		args = args[1]
-	end
+	args = type(args[1]) == "table" and args[1] or args
 
 	return exports[MYSQL_RESOURCE_NAME]:exec(queryString, args)
 end
