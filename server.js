@@ -1,4 +1,4 @@
-const DEBUG = true; //Show times
+const DEBUG = false; //Show times
 
 const mysql = require('mysql2');
 
